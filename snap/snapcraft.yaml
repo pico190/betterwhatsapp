@@ -1,0 +1,22 @@
+name: better-whatsapp
+base: core22
+adopt-info: set-version
+summary: BetterWhatsapp
+description: |
+  Modified Whatsapp Client
+
+grade: stable
+confinement: strict
+
+parts:
+  my-part:
+    npm-include-node: true
+    npm-node-version: "20.14.0"
+    plugin: npm
+    source: .
+  set-version:
+    source: .
+    override-pull: |
+      craftctl default
+      craftctl set version=$(npm pkg get version)
+      craftctl set grade="devel"
