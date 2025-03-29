@@ -19,10 +19,11 @@ function onNewWindow(details) {
   return { action: "deny" };
 }
 
+const iconPath = path.resolve(__dirname, "icons", "256x256.png");
+console.log("ICON //", iconPath);
 const createWindow = () => {
   window = new BrowserWindow({
-    icon:
-      process.platform === "linux" && path.join(__dirname, "icons", "512x512"),
+    icon: iconPath,
     autoHideMenuBar: true,
     title: "BetterWhatsapp",
     maximize: true,
@@ -34,6 +35,7 @@ const createWindow = () => {
   });
   window.setAutoHideMenuBar(true);
   window.setMenu(null);
+  window.setIcon(iconPath);
   window.loadURL(appUrl, { userAgent: config.userAgent });
 
   window.webContents.on("did-finish-load", () => {
@@ -82,6 +84,9 @@ const createWindow = () => {
 
   window.once("ready-to-show", () => {
     window.maximize();
+    window.setIcon(iconPath);
+    console.log("INFO //", "readyToShow() event fired");
+    window.webContents.setZoomFactor(1.1);
     window.show();
   });
 };
@@ -110,6 +115,7 @@ if (!appLock) {
 }
 
 async function onAppReady() {
+  console.log("INFO //", "onAppReady() event fired");
   app.setName("BetterWhatsapp");
   createWindow();
 }

@@ -1,6 +1,6 @@
 {
   "name": "better-whatsapp",
-  "version": "1.4.0",
+  "version": "1.4.2",
   "description": "Modified Whatsapp Client",
   "main": "app/index.js",
   "author": {
@@ -39,10 +39,11 @@
       "packageCategory": "net",
       "executableName": "better-whatsapp",
       "appId": "com.pico190.betterwhatsapp",
+      "icon": "./app/icons/256x256.png",
       "synopsis": "BetterWhatsapp",
       "description": "Modified Whatsapp Client",
       "desktop": {
-        "Name": "BetterWhatsapp",
+        "Name": "Better Whatsapp",
         "Comment": "Unofficial Whatsapp Client",
         "StartupWMClass": "BetterWhatsapp"
       },
@@ -57,6 +58,11 @@
       "summary": "Better Whatsapp",
       "confinement": "strict",
       "grade": "stable",
+      "desktop": {
+        "Name": "Better Whatsapp",
+        "Comment": "Unofficial Whatsapp Client",
+        "StartupWMClass": "BetterWhatsapp"
+      },
       "base": "core22",
       "plugs": [
         "default"
@@ -67,6 +73,7 @@
     }
   },
   "dependencies": {
-    "electron-context-menu": "^3.6.1"
+    "electron-context-menu": "^3.6.1",
+    "native-image": "^0.7.0"
   }
 }
