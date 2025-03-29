@@ -11,9 +11,8 @@ const appUrl = "https://web.whatsapp.com";
  * @type {BrowserWindow}
  */
 let window = null;
-let tray = null; // Para la bandeja del sistema
+let tray = null;
 
-// Definir la función onNewWindow
 function onNewWindow(details) {
   shell.openExternal(details.url);
   return { action: "deny" };
@@ -23,9 +22,10 @@ const createWindow = () => {
   window = new BrowserWindow({
     icon: path.join(__dirname, "assets/icons/whatsapp.png"),
     autoHideMenuBar: true,
-    show: false, // Para que no se muestre hasta estar listo
+    show: false,
   });
-
+  window.setAutoHideMenuBar(true);
+  window.setMenu(null);
   window.loadURL(appUrl, { userAgent: config.userAgent });
 
   window.webContents.on("did-finish-load", () => {
@@ -50,13 +50,11 @@ const createWindow = () => {
 
   window.webContents.setWindowOpenHandler(onNewWindow);
 
-  // Maneja el evento de cerrar para minimizar en lugar de cerrar
   window.on("close", (e) => {
-    e.preventDefault(); // Previene el cierre
-    window.hide(); // Minimiza la ventana
+    e.preventDefault();
+    window.hide();
   });
 
-  // Crear bandeja del sistema
   tray = new Tray(path.join(__dirname, "assets/icons/whatsapp.png"));
   const contextMenuTray = Menu.buildFromTemplate([
     { label: "Open", click: () => window.show() },
@@ -74,16 +72,14 @@ const createWindow = () => {
   tray.setToolTip("WhatsApp");
   tray.setContextMenu(contextMenuTray);
 
-  // Muestra la ventana cuando está lista
   window.once("ready-to-show", () => {
-    window.show(); // Muestra la ventana
+    window.show();
   });
 };
 
-// Configurar inicio automático
 app.setLoginItemSettings({
   openAtLogin: true,
-  openAsHidden: false, // Puede configurarse a true si quieres que no se vea en el inicio
+  openAsHidden: false,
 });
 
 contextMenu({
