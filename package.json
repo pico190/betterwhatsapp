@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "electron ./app",
+    "start": "electron ./app --disable-gpu --no-sandbox",
     "pack": "electron-builder --dir",
     "dist": "electron-builder --linux",
     "flatpak": "flatpak-builder --user --install build-dir flatpak-builder.json",
@@ -22,7 +22,6 @@
   },
   "build": {
     "appId": "better-whatsapp",
-    "icon": "app/assets/icons/whatsapp.png",
     "files": [
       "app/**/**",
       "build/**/**",
@@ -39,16 +38,19 @@
       "category": "Chat;Network",
       "packageCategory": "net",
       "executableName": "better-whatsapp",
+      "appId": "com.pico190.betterwhatsapp",
       "synopsis": "BetterWhatsapp",
       "description": "Modified Whatsapp Client",
       "desktop": {
         "Name": "BetterWhatsapp",
         "Comment": "Unofficial Whatsapp Client",
-        "StartupWMClass": "better-whatsapp"
+        "StartupWMClass": "BetterWhatsapp"
       },
       "target": [
         "deb",
-        "snap"
+        "snap",
+        "rpm",
+        "AppImage"
       ]
     },
     "snap": {

@@ -4,6 +4,7 @@ const path = require("path");
 const contextMenu = require("electron-context-menu");
 const https = require("https");
 const fs = require("fs");
+const { nativeImage } = require("electron");
 
 const appUrl = "https://web.whatsapp.com";
 
@@ -20,8 +21,15 @@ function onNewWindow(details) {
 
 const createWindow = () => {
   window = new BrowserWindow({
-    icon: path.join(__dirname, "assets/icons/whatsapp.png"),
+    icon:
+      process.platform === "linux" && path.join(__dirname, "icons", "512x512"),
     autoHideMenuBar: true,
+    title: "BetterWhatsapp",
+    maximize: true,
+    webPreferences: {
+      webSecurity: false,
+      plugins: true,
+    },
     show: false,
   });
   window.setAutoHideMenuBar(true);
@@ -55,7 +63,7 @@ const createWindow = () => {
     window.hide();
   });
 
-  tray = new Tray(path.join(__dirname, "assets/icons/whatsapp.png"));
+  tray = new Tray(path.join(__dirname, "icons/256x256.png"));
   const contextMenuTray = Menu.buildFromTemplate([
     { label: "Open", click: () => window.show() },
     { label: "Minimize", click: () => window.hide() },
@@ -69,10 +77,11 @@ const createWindow = () => {
       },
     },
   ]);
-  tray.setToolTip("WhatsApp");
+  tray.setToolTip("BetterWhatsapp");
   tray.setContextMenu(contextMenuTray);
 
   window.once("ready-to-show", () => {
+    window.maximize();
     window.show();
   });
 };
@@ -101,6 +110,7 @@ if (!appLock) {
 }
 
 async function onAppReady() {
+  app.setName("BetterWhatsapp");
   createWindow();
 }
 
