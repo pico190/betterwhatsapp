@@ -1,4 +1,4 @@
-const { app, BrowserWindow, shell, Tray, Menu } = require("electron");
+const { app, BrowserWindow, shell, ipcMain, Tray, Menu } = require("electron");
 const { config } = require("./config");
 const path = require("path");
 const contextMenu = require("electron-context-menu");
@@ -8,7 +8,7 @@ const { nativeImage } = require("electron");
 
 const appUrl = "https://web.whatsapp.com";
 
-const version = "v1.4.3";
+const version = '"v1.4.4"';
 /**
  * @type {BrowserWindow}
  */
@@ -28,7 +28,6 @@ const createWindow = () => {
     title: "BetterWhatsapp",
     maximize: true,
     webPreferences: {
-      nodeIntegration: true,
       webSecurity: false,
       plugins: true,
     },
