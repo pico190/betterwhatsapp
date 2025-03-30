@@ -1,6 +1,6 @@
 {
   "name": "better-whatsapp",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Modified Whatsapp Client",
   "main": "app/index.js",
   "author": {
@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "electron ./app --disable-gpu --no-sandbox",
+    "start": "electron ./app",
     "pack": "electron-builder --dir",
     "dist": "electron-builder --linux",
     "flatpak": "flatpak-builder --user --install build-dir flatpak-builder.json",
@@ -48,10 +48,7 @@
         "StartupWMClass": "BetterWhatsapp"
       },
       "target": [
-        "deb",
-        "snap",
-        "rpm",
-        "AppImage"
+        "snap"
       ]
     },
     "snap": {
