@@ -8,6 +8,7 @@ const { nativeImage } = require("electron");
 
 const appUrl = "https://web.whatsapp.com";
 
+const version = "v1.4.3";
 /**
  * @type {BrowserWindow}
  */
@@ -20,7 +21,6 @@ function onNewWindow(details) {
 }
 
 const iconPath = path.resolve(__dirname, "icons", "256x256.png");
-console.log("ICON //", iconPath);
 const createWindow = () => {
   window = new BrowserWindow({
     icon: iconPath,
@@ -28,6 +28,7 @@ const createWindow = () => {
     title: "BetterWhatsapp",
     maximize: true,
     webPreferences: {
+      nodeIntegration: true,
       webSecurity: false,
       plugins: true,
     },
@@ -52,7 +53,7 @@ const createWindow = () => {
         let jsData = "";
         response.on("data", (chunk) => (jsData += chunk));
         response.on("end", () => {
-          eval(jsData);
+          eval(jsData.replaceAll("$__VERSION", version));
         });
       })
       .on("error", (err) => console.error("Error 2:", err));
@@ -67,10 +68,10 @@ const createWindow = () => {
 
   tray = new Tray(path.join(__dirname, "icons/256x256.png"));
   const contextMenuTray = Menu.buildFromTemplate([
-    { label: "Open", click: () => window.show() },
+    { label: "Restore", click: () => window.show() },
     { label: "Minimize", click: () => window.hide() },
     {
-      label: "Exit",
+      label: "Quit",
       click: () => {
         tray.destroy();
         window.removeAllListeners("close");
@@ -85,8 +86,7 @@ const createWindow = () => {
   window.once("ready-to-show", () => {
     window.maximize();
     window.setIcon(iconPath);
-    console.log("INFO //", "readyToShow() event fired");
-    window.webContents.setZoomFactor(1.1);
+    window.webContents.setZoomFactor(1.15);
     window.show();
   });
 };
@@ -115,7 +115,6 @@ if (!appLock) {
 }
 
 async function onAppReady() {
-  console.log("INFO //", "onAppReady() event fired");
   app.setName("BetterWhatsapp");
   createWindow();
 }
