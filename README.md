@@ -1,5 +1,4 @@
-# BetterWhatsapp
-
+![Thumbnail](thumbnail.png)
 > A **WhatsApp client for Linux** with theme customization.
 
 > [!NOTE]
@@ -18,4 +17,5 @@ snap install <file> --dangerous
 ## Local development
 Just as always: `npm i`, `npm run start` for development, `npm run dist` for building...
 
+## Preview
 ![Betterwhatsapp Preview](preview.png)
