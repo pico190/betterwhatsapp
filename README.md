@@ -17,3 +17,5 @@ snap install <file> --dangerous
 
 ## Local development
 Just as always: `npm i`, `npm run start` for development, `npm run dist` for building...
+
+![Betterwhatsapp Preview](preview.png)
