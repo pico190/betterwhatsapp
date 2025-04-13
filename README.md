@@ -4,7 +4,7 @@
 
 We're in the process of uploading the **better-whatsapp** package to the Snap Store. In the meantime, you can install it by downloading the .snap file in the releases tab and running:
 ```sh
-snap install <file> --dangerous
+snap install <filename> --dangerous
 ```
 
 ## Local development
