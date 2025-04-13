@@ -1,76 +1,63 @@
 {
-  "name": "better-whatsapp",
-  "version": "1.4.4",
-  "description": "Modified Whatsapp Client",
-  "main": "app/index.js",
-  "author": {
-    "name": "pico190",
-    "email": "picoprograma190@proton.me",
-    "url": "https://github.com/pico190/betterwhatsapp/"
-  },
-  "license": "MIT",
-  "scripts": {
-    "start": "electron ./app",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder --linux",
-    "flatpak": "flatpak-builder --user --install build-dir flatpak-builder.json",
-    "publish": "electron-builder --linux -p always"
-  },
-  "devDependencies": {
-    "electron": "^29.0.0",
-    "electron-builder": "^24.12.0"
-  },
-  "build": {
-    "appId": "better-whatsapp",
-    "files": [
-      "app/**/**",
-      "build/**/**",
-      "node_modules/**/**",
-      "package.json"
-    ],
-    "protocols": {
-      "name": "whatsapp",
-      "schemes": [
-        "whatsapp"
-      ]
-    },
-    "linux": {
-      "category": "Chat;Network",
-      "packageCategory": "net",
-      "executableName": "better-whatsapp",
-      "appId": "com.pico190.betterwhatsapp",
-      "icon": "./app/icons/256x256.png",
-      "synopsis": "BetterWhatsapp",
-      "description": "Modified Whatsapp Client",
-      "desktop": {
-        "Name": "Better Whatsapp",
-        "Comment": "Unofficial Whatsapp Client",
-        "StartupWMClass": "BetterWhatsapp"
-      },
-      "target": [
-        "snap"
-      ]
-    },
-    "snap": {
-      "summary": "Better Whatsapp",
-      "confinement": "strict",
-      "grade": "stable",
-      "desktop": {
-        "Name": "Better Whatsapp",
-        "Comment": "Unofficial Whatsapp Client",
-        "StartupWMClass": "BetterWhatsapp"
-      },
-      "base": "core22",
-      "plugs": [
-        "default"
-      ],
-      "publish": [
-        "snapStore"
-      ]
-    }
-  },
-  "dependencies": {
-    "electron-context-menu": "^3.6.1",
-    "native-image": "^0.7.0"
-  }
+	"name": "better-whatsapp",
+	"version": "1.4.5",
+	"description": "Modified Whatsapp Client",
+	"main": "app/index.js",
+	"author": {
+		"name": "pico190",
+		"email": "picoprograma190@proton.me",
+		"url": "https://github.com/pico190/betterwhatsapp/"
+	},
+	"license": "MIT",
+	"scripts": {
+		"start": "electron ./app",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder --linux",
+		"flatpak": "flatpak-builder --user --install build-dir flatpak-builder.json",
+		"publish": "electron-builder --linux -p always"
+	},
+	"devDependencies": {
+		"electron": "^29.0.0",
+		"electron-builder": "^24.12.0"
+	},
+	"build": {
+		"appId": "better-whatsapp",
+		"files": ["app/**/**", "build/**/**", "node_modules/**/**", "package.json"],
+		"protocols": {
+			"name": "whatsapp",
+			"schemes": ["whatsapp"]
+		},
+		"linux": {
+			"category": "Chat;Network",
+			"packageCategory": "net",
+			"executableName": "better-whatsapp",
+			"appId": "com.pico190.betterwhatsapp",
+			"icon": "./app/icons/256x256.png",
+			"synopsis": "BetterWhatsapp",
+			"description": "Modified Whatsapp Client",
+			"desktop": {
+				"Name": "Better Whatsapp",
+				"Comment": "Unofficial Whatsapp Client",
+				"StartupWMClass": "BetterWhatsapp"
+			},
+			"target": ["snap"]
+		},
+		"snap": {
+			"summary": "Better Whatsapp",
+			"confinement": "strict",
+			"grade": "stable",
+			"desktop": {
+				"Name": "Better Whatsapp",
+				"Comment": "Unofficial Whatsapp Client",
+				"StartupWMClass": "BetterWhatsapp"
+			},
+			"base": "core22",
+			"plugs": ["default"],
+			"publish": ["snapStore"]
+		}
+	},
+	"dependencies": {
+		"electron-context-menu": "^3.6.1",
+		"native-image": "^0.7.0"
+	}
 }
