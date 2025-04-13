@@ -1,5 +1,4 @@
 ![Thumbnail](thumbnail.png)
-> A **WhatsApp client for Linux** with theme customization.
 
 > [!NOTE]
 > BetterWhatsapp themes **will not work** with the new whatsapp experimental beta theme
