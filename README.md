@@ -1,3 +1,6 @@
+> [!NOTE]
+> Use [v2](https://github.com/pico190/betterwhatsapp2) instead.
+
 ![Thumbnail](thumbnail.png)
 
 ## Installation
